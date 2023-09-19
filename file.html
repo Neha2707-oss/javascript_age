@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="mobile">Enter Mobile No.</label>
+        <input type="text" name="" id="mobile" onkeydown="validateMobile(event,this);" >
+        <br>
+        <label for="dob">Dob</label>
+        <input type="date" name="" id="dob" onchange="getAge(this)">
+        <br>
+        <label for="age">Age</label>
+        <input type="text" name="" id="age">
+        <div id="test">
+
+        </div>
+    </form>
+</body>
+<script>
+    function validateMobile(e,field)
+    {
+        
+        if(e.key.match(/^[a-zA-Z]*$/))
+            {
+                e.preventDefault();
+                var a=field.value;
+                field.value=a;
+                
+            }
+    }
+    function getAge(field)
+    {
+        var dob=field.value;
+
+        var today = new Date();
+        var birthDate = new Date(dob);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        document.getElementById("age").value=age;
+    }
+</script>
+</html>
